@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jumpbox
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jumpbox
+  template:
+    metadata:
+      labels:
+        app: jumpbox
+    spec:
+      containers:
+        - name: node-kafka
+          image: radial/busyboxplus:curl
+          command: ["/bin/bash"]
