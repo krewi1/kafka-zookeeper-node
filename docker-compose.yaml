@@ -1,0 +1,29 @@
+version: '3'
+services:
+  server:
+    image: krewi/nodeapp
+    ports:
+    - "3000:3000"
+    volumes:
+    - .:/app
+    links:
+    - kafka
+    - zookeeper
+    environment:
+      - ZOOKEEPER=zookeeper:2181
+      - KAFKA=kafka:9092
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+    - '9092:9092'
+    links:
+      - zookeeper
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+  zookeeper:
+    image: bitnami/zookeeper
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    ports:
+      - '2181:2181'
