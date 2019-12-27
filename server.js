@@ -44,6 +44,10 @@ app.use(bodyParser.json());
     res.send("Zprava odeslana");
   });
 
+  app.get("/ping", (_req, res) => {
+    res.status(200).send("I am ok");
+  });
+
   app.post("/topic2", async (req, res) => {
     const { message } = req.body;
     await producer.send({

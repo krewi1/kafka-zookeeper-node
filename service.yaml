@@ -38,3 +38,15 @@ spec:
             - name: ZOOKEEPER
               value: zk-cs:2181
           imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 1
