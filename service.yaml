@@ -37,6 +37,10 @@ spec:
               value: kafka-0.kafka-headless:9092,kafka-1.kafka-headless:9092,kafka-2.kafka-headless:9092
             - name: ZOOKEEPER
               value: zk-cs:2181
+            - name: GROUP
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
