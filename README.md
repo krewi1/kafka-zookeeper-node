@@ -58,6 +58,10 @@ and after a moment there should be a message at terminal which is watching the n
 
 ---
 **TROUBLESHOOT**
+
+
 If there is problem with dns resolution from jumpbox but you can still ping cluster ip of node service, add record to /etc/hosts
+
 node.service.ip.address rest
+
 ---
