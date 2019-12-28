@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: jumpbox
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: jumpbox
@@ -13,6 +13,6 @@ spec:
         app: jumpbox
     spec:
       containers:
-        - name: node-kafka
+        - name: jumpbox
           image: radial/busyboxplus:curl
-          command: ["/bin/bash"]
+          command: [sh, -c, "sleep 1000"]
